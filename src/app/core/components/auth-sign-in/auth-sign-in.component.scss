@@ -11,7 +11,7 @@
 .signin-form {
   margin-top: 100px;
   width: 18em;
-  height: 320px;
+  height: 350px;
   background-color: #FFF;
   border: 1px solid #D8DEE4;
   border-radius: 10px;
@@ -28,8 +28,17 @@
   font-size: larger;
 }
 
-.forgot-button-container {
+.forgot-link-container {
   display: flex;
   justify-content: center; 
-  padding-top: 8px;
+  padding-top: 20px;
+}
+.create-link-container {
+  display: flex;
+  justify-content: center; 
+  padding-top: 18px;
+}
+.links {
+  color: #3F50B5;
+  padding-left: 6px;
 }

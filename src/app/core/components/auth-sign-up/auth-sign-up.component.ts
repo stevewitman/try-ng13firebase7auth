@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+
+import { togglePasswordVisibility, PasswordVisibility} from '../../helpers/helpers'
 
 @Component({
   selector: 'app-auth-sign-up',
@@ -6,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth-sign-up.component.scss'],
 })
 export class AuthSignUpComponent implements OnInit {
-  constructor() {}
+  passwordVisibility: PasswordVisibility = {
+    state: false,
+    property: 'password',
+    icon: 'visibility_off',
+  };
+  toggleVisibility = togglePasswordVisibility;
+
+  signinForm = this.fb.group({
+    email: ['', [Validators.required]],
+    password1: ['', [Validators.required]],
+    password2: ['', [Validators.required]],
+  });
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
 
@@ -15,4 +31,8 @@ export class AuthSignUpComponent implements OnInit {
     // this.isSignedIn = true;
     // this.signingin = false;
   }
+
+  // toggleVisibility(passwordVisibility: PasswordVisibility): PasswordVisibility {
+  //   return togglePasswordVisibility(passwordVisibility);
+  // }
 }

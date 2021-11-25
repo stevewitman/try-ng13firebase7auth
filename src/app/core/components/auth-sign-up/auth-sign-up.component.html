@@ -1,19 +1,47 @@
 <div class="container">
   <div class="signin-form">
-    <h2>Create Account</h2>
-    <mat-form-field appearance="fill" class="auth-input">
-      <mat-label>Email</mat-label>
-      <input matInput type="text" #email />
-    </mat-form-field> 
-    <br />
-    <mat-form-field appearance="fill" class="auth-input">
-      <mat-label>Password</mat-label>
-      <input matInput type="text" #password />
-    </mat-form-field>
-    <div>
-      <button mat-raised-button color="primary" class="auth-signin-button" (click)="onSignup(email.value, password.value)">
-        Sign in
-      </button>
-    </div>
+    <form>
+      <h2>Create Account</h2>
+
+      <mat-form-field appearance="fill" class="auth-input">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" #email autocomplete="off" />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill" class="auth-input">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="passwordVisibility.property"
+          #password1
+          autocomplete="off"
+        />
+        <mat-icon matSuffix (click)="passwordVisibility = toggleVisibility(passwordVisibility)">{{
+          passwordVisibility.icon
+        }}</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="auth-input">
+        <mat-label>Re-type Password</mat-label>
+        <input
+          matInput
+          [type]="passwordVisibility.property"
+          #password2
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="auth-signin-button"
+          (click)="onSignup(email.value, password1.value)"
+        >
+          Create Account
+        </button>
+      </div>
+    </form>
   </div>
 </div>

@@ -1,0 +1,13 @@
+  <button mat-stroked-button (click)="signup()" class="auth-button" *ngIf="!isSignedIn">
+    Create account
+  </button>
+  <button mat-stroked-button (click)="signin()" class="auth-button" *ngIf="!isSignedIn">
+    Sign in
+  </button>
+  <span *ngIf="isSignedIn">{{ user }}</span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isSignedIn" [matMenuTriggerFor]="menu">
+    <mat-icon>person</mat-icon>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="signout()">Signout</button>
+    </mat-menu>
+  </button>

@@ -1,47 +1,73 @@
 <div class="container">
-  <div class="signin-form">
-    <h2>Sign In</h2>
-    <mat-form-field appearance="fill" class="auth-input">
-      <mat-label>Email</mat-label>
-      <input matInput type="text" #email autocomplete="off" />
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill" class="auth-input">
-      <mat-label>Password</mat-label>
-      <input
-        matInput
+  <div class="auth-form">
+    <form [formGroup]="authForm">
+      <h2>Sign In</h2>
+
+      <mat-form-field appearance="fill" class="auth-form-field">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="email"
+          autocomplete="off"
+          class="auth-input-text"
+        />
+        <mat-error *ngIf="email!.errors">Email is required</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill" class="auth-form-field">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
           [type]="passwordVisibility.property"
-        #password
-        autocomplete="off"
-      />
-      <mat-icon
-        matSuffix
-        (click)="passwordVisibility = toggleVisibility(passwordVisibility)"
-        >{{ passwordVisibility.icon }}</mat-icon
-      >
-    </mat-form-field>
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="auth-signin-button"
-        (click)="onSignin(email.value, password.value)"
-      >
-        Sign in
-      </button>
-    </div>
-    <div class="forgot-link-container">
-      or<a routerLink="forgot-password" routerLinkActive="active" class="links"
-        >Forgot Password</a
-      >
-    </div>
-    <div class="create-link-container">
-      Don't have an account?<a
-        routerLink="sign-up"
-        routerLinkActive="active"
-        class="links"
-        >Sign Up</a
-      >
-    </div>
+          formControlName="password"
+          autocomplete="off"
+          class="auth-input-text"
+        />
+        <mat-icon
+          matSuffix
+          (click)="passwordVisibility = toggleVisibility(passwordVisibility)"
+          >{{ passwordVisibility.icon }}</mat-icon
+        >
+        <mat-error *ngIf="password!.errors">Password is required</mat-error>
+      </mat-form-field>
+
+      <div>
+        <button
+          mat-stroked-button
+          *ngIf="authForm.invalid"
+          color="primary"
+          class="auth-submit-button"
+        >
+          Sign In
+        </button>
+        <button
+          mat-raised-button
+          *ngIf="authForm.valid"
+          color="primary"
+          class="auth-submit-button"
+          (click)="onSubmit()"
+        >
+          Sign In
+        </button>
+      </div>
+
+      <div class="auth-links-container">
+        Don't have an account?<a
+          routerLink="/signup"
+          routerLinkActive="active"
+          class="auth-links"
+          >Create Account</a
+        >
+      <br>
+        or<a
+          routerLink="/forgot-password"
+          routerLinkActive="active"
+          class="auth-links"
+          >Forgot Password</a
+        >
+      </div>
+    </form>
   </div>
 </div>

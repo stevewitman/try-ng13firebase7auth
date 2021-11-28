@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from '../../services/auth.service';
 import {
   togglePasswordVisibility,
   PasswordVisibility,
@@ -12,6 +13,7 @@ import {
   styleUrls: ['./auth-sign-in.component.scss'],
 })
 export class AuthSignInComponent implements OnInit {
+  authForm!: FormGroup;
   passwordVisibility: PasswordVisibility = {
     state: false,
     property: 'password',
@@ -19,18 +21,27 @@ export class AuthSignInComponent implements OnInit {
   };
   toggleVisibility = togglePasswordVisibility;
 
-  constructor(private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+  ) {}
 
-  ngOnInit(): void {}
-
-  onSignin(email: string, password: string) {
-    // this.authService.signIn(email, password);
-    // this.isSignedIn = true;
-    // this.signingin = false;
+  ngOnInit(): void {
+    this.authForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 
-  onForgotPassword() {
-    this.router.navigate(['forgot-password']);
+  get email() {
+    return this.authForm.get('email');
+  }
+  get password() {
+    return this.authForm.get('password');
+  }
+
+  onSubmit() {
+    console.log('SING IN - SUBMIT')
   }
 
 }

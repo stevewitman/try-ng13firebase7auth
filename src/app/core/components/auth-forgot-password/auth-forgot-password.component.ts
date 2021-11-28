@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth-forgot-password',
@@ -7,11 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth-forgot-password.component.scss'],
 })
 export class AuthForgotPasswordComponent implements OnInit {
-  constructor(private router: Router) {}
+  authForm!: FormGroup;
 
-  ngOnInit(): void {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+  ) {}
 
-  onForgotPassword(email: string) {
-    this.router.navigate(['forgot-password']);
+  get email() {
+    return this.authForm.get('email');
+  }
+
+  ngOnInit(): void {
+    this.authForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
+
+  onSubmit() {
+    console.log('FORGOT PASSWORD - SUBMIT');
   }
 }

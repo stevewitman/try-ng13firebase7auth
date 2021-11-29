@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+
+import { AuthService, User } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-status',
@@ -11,27 +12,28 @@ export class UserStatusComponent implements OnInit {
   isSignedIn = false;
   signingup = false;
   signingin = false;
-  user = 'Steve';
+  userEmail = '';
+  currentUser: User | null = null;
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit(): void {}
-
-  signin() {
-    this.signingin = true;
-    this.signingup = false;
-    this.router.navigate(['signin']);
+  ngOnInit(): void {
+    this.authService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+    });
   }
 
-  signup() {
-    this.signingup = true;
-    this.signingin = false;
-    this.router.navigate(['signup']);
+  onSignin() {
+    this.router.navigate(['sign-in']);
   }
 
-  signout() {
-    // this.authService.signOut();
-    this.isSignedIn = false;
+  onSignup() {
+    this.router.navigate(['sign-up']);
+  }
+
+  onSignout() {
+    this.authService.signOut();
+    console.log('Signed out')
   }
 
 }

@@ -26,6 +26,5 @@ export class AuthForgotPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('FORGOT PASSWORD - SUBMIT');
   }
 }

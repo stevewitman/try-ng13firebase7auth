@@ -10,13 +10,13 @@ export function togglePasswordVisibility(passwordVisibility: PasswordVisibility)
     return {
       state: false,
       property: 'password',
-      icon: 'visibility_off',
+      icon: 'visibility',
     };
   } else {
     return {
       state: true,
       property: 'text',
-      icon: 'visibility',
+      icon: 'visibility_off',
     };
   }
 }

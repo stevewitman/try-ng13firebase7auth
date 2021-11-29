@@ -27,7 +27,6 @@
         />
         <mat-icon
           matSuffix
-          color="primary"
           (click)="passwordVisibility = toggleVisibility(passwordVisibility)"
           >{{ passwordVisibility.icon }}</mat-icon
         >
@@ -50,14 +49,14 @@
           *ngIf="authForm.valid"
           color="primary"
           class="auth-submit-button"
-          (click)="onSubmit()"
+          (click)="onSubmit(email!.value, password!.value)"
         >
           Create Account
         </button>
       </div>
 
       <div class="auth-links-container">
-        Already have an account?<a routerLink="/signin" routerLinkActive="active" class="auth-links"
+        Already have an account?<a routerLink="/sign-in" routerLinkActive="active" class="auth-links"
           >Sign In</a
         >
       </div>

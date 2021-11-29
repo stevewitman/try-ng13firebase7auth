@@ -17,7 +17,7 @@ export class AuthSignUpComponent implements OnInit {
   passwordVisibility: PasswordVisibility = {
     state: false,
     property: 'password',
-    icon: 'visibility_off',
+    icon: 'visibility',
   };
   toggleVisibility = togglePasswordVisibility;
   validatePasswordMinLength = 6;
@@ -47,8 +47,8 @@ export class AuthSignUpComponent implements OnInit {
     return this.authForm.get('password');
   }
 
-  onSubmit() {
-    console.log('SIGN UP - SUBMIT');
+  onSubmit(email: string, password: string) {
+    this.authService.signUp(email, password);
   }
 
   getPasswordErrorMessage() {

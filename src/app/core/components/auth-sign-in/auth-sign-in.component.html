@@ -47,7 +47,7 @@
           *ngIf="authForm.valid"
           color="primary"
           class="auth-submit-button"
-          (click)="onSubmit()"
+          (click)="onSubmit(email!.value, password!.value)"
         >
           Sign In
         </button>
@@ -55,7 +55,7 @@
 
       <div class="auth-links-container">
         Don't have an account?<a
-          routerLink="/signup"
+          routerLink="/sign-up"
           routerLinkActive="active"
           class="auth-links"
           >Create Account</a

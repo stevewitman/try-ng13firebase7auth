@@ -17,7 +17,7 @@ export class AuthSignInComponent implements OnInit {
   passwordVisibility: PasswordVisibility = {
     state: false,
     property: 'password',
-    icon: 'visibility_off',
+    icon: 'visibility',
   };
   toggleVisibility = togglePasswordVisibility;
 
@@ -40,8 +40,8 @@ export class AuthSignInComponent implements OnInit {
     return this.authForm.get('password');
   }
 
-  onSubmit() {
-    console.log('SING IN - SUBMIT')
+  onSubmit(email: string, password: string) {
+    this.authService.signIn(email, password);
   }
 
 }

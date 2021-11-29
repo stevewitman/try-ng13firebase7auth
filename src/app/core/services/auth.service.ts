@@ -94,10 +94,7 @@ export class AuthService {
   }
 
   signOut() {
-    return this.angularFireAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
-    });
+    return this.angularFireAuth.signOut();
   }
 
 }

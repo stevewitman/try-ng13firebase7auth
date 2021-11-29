@@ -18,6 +18,8 @@ import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { AuthSignInComponent } from './core/components/auth-sign-in/auth-sign-in.component';
+
 
 @NgModule({
   declarations: [AppComponent],

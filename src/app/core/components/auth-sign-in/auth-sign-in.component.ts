@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { AuthService } from '../../services/auth.service';
 import {
@@ -24,6 +25,7 @@ export class AuthSignInComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
+    private matDialogRef: MatDialogRef<AuthSignInComponent>
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,15 @@ export class AuthSignInComponent implements OnInit {
 
   onSubmit(email: string, password: string) {
     this.authService.signIn(email, password);
+    this.onClose();
   }
 
+  onSignUp() {
+    this.onClose();
+    
+  }
+
+  onClose() {
+    this.matDialogRef.close();
+  }
 }

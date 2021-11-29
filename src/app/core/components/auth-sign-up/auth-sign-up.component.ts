@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { AuthService } from '../../services/auth.service';
 import {
@@ -23,7 +24,11 @@ export class AuthSignUpComponent implements OnInit {
   validatePasswordMinLength = 6;
   validatePasswordMaxLength = 24;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private matDialogRef: MatDialogRef<AuthSignUpComponent>
+  ) {}
 
   ngOnInit(): void {
     this.authForm = this.fb.group({

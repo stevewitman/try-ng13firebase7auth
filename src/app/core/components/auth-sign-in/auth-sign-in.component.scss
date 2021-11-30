@@ -1,21 +1,13 @@
-// .container {
-//   background-color: #F6F8FA;
-//   width: 100vw;
-//   height: calc(100vh - 64px);
-//   display: flex;
-//   justify-content: center; 
-//   padding-top: 100px;
-// }
+h2 {
+  margin-top: 4px;
+}
 
-// .auth-form {
-//   width: 18em;
-//   position: absolute;
-//   background-color: #FFF;
-//   border: 1px solid #D8DEE4;
-//   border-radius: 10px;
-//   padding: 1em 2em 2em 2em;
-// }
+a {
+  cursor: pointer;
+}
+
 .form-header {
+  height: 56px;
   display: flex;
   justify-content: space-between;
 }
@@ -25,14 +17,9 @@
 }
 
 .form-close-button {
-  top: -12px;
-  right: -12px;
+  top: -24px;
+  right: -24px;
 }
-
-// .form-close-button {
-//     justify-content: flex-end;
-
-// }
 
 .auth-form-field {
   width: 100%;

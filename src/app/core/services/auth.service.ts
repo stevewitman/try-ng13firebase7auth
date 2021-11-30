@@ -2,8 +2,12 @@ import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AuthSignInComponent } from '../components/auth-sign-in/auth-sign-in.component';
+import { AuthSignUpComponent } from '../components/auth-sign-up/auth-sign-up.component';
 
 import { Observable, BehaviorSubject, share } from 'rxjs';
+import { AuthForgotPasswordComponent } from '../components/auth-forgot-password/auth-forgot-password.component';
 
 export interface User {
   uid?: string;
@@ -21,7 +25,8 @@ export class AuthService {
     public angularFireAuth: AngularFireAuth,
     public angularFirestore: AngularFirestore,
     private router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    private matDialog: MatDialog
   ) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
@@ -97,4 +102,24 @@ export class AuthService {
     return this.angularFireAuth.signOut();
   }
 
+  openSignInDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.matDialog.open(AuthSignInComponent, dialogConfig);
+  }
+
+  openSignUpDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.matDialog.open(AuthSignUpComponent, dialogConfig);
+  }
+
+  openForgotPassword() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.matDialog.open(AuthForgotPasswordComponent, dialogConfig);
+  }
 }

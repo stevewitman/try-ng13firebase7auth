@@ -1,66 +1,70 @@
-<!-- <div class="container">
-  <div class="auth-form"> -->
-    <form [formGroup]="authForm">
-      <h2>Create Account</h2>
+<div class="form-header">
+  <h2 class="form-title">Sign Up</h2>
+  <button
+    mat-icon-button (click)="onClose()" class="form-close-button" tabindex="-1"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 
-      <mat-form-field appearance="fill" class="auth-form-field">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          type="text"
-          formControlName="email"
-          autocomplete="off"
-          class="auth-input-text"
-        />
-        <mat-error *ngIf="email!.errors">Email is required</mat-error>
-      </mat-form-field>
-      <br />
+<form [formGroup]="authForm">
+  <mat-form-field appearance="fill" class="auth-form-field">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="email"
+      autocomplete="off"
+      class="auth-input-text"
+    />
+    <mat-error *ngIf="email!.errors">Email is required</mat-error>
+  </mat-form-field>
+  <br />
 
-      <mat-form-field appearance="fill" class="auth-form-field">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          [type]="passwordVisibility.property"
-          formControlName="password"
-          autocomplete="off"
-          class="auth-input-text"
-        />
-        <mat-icon
-          matSuffix
-          (click)="passwordVisibility = toggleVisibility(passwordVisibility)"
-          >{{ passwordVisibility.icon }}</mat-icon
-        >
-        <mat-error *ngIf="password!.errors">{{
-          getPasswordErrorMessage()
-        }}</mat-error>
-      </mat-form-field>
+  <mat-form-field appearance="fill" class="auth-form-field">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      [type]="passwordVisibility.property"
+      formControlName="password"
+      autocomplete="off"
+      class="auth-input-text"
+    />
+    <mat-icon
+      matSuffix
+      (click)="passwordVisibility = toggleVisibility(passwordVisibility)"
+      >{{ passwordVisibility.icon }}</mat-icon
+    >
+    <mat-error *ngIf="password!.errors">{{
+      getPasswordErrorMessage()
+    }}</mat-error>
+  </mat-form-field>
 
-      <div>
-        <button
-          mat-stroked-button
-          *ngIf="authForm.invalid"
-          color="primary"
-          class="auth-submit-button"
-        >
-          Create Account
-        </button>
-        <button
-          mat-raised-button
-          *ngIf="authForm.valid"
-          color="primary"
-          class="auth-submit-button"
-          (click)="onSubmit(email!.value, password!.value)"
-        >
-          Create Account
-        </button>
-      </div>
+  <div>
+    <button
+      mat-stroked-button
+      *ngIf="authForm.invalid"
+      color="primary"
+      class="auth-submit-button"
+    >
+      Create Account
+    </button>
+    <button
+      mat-raised-button
+      *ngIf="authForm.valid"
+      color="primary"
+      class="auth-submit-button"
+      (click)="onSubmit(email!.value, password!.value)"
+    >
+      Create Account
+    </button>
+  </div>
 
-      <div class="auth-links-container">
-        Already have an account?<a routerLink="/sign-in" routerLinkActive="active" class="auth-links"
-          >Sign In</a
-        >
-      </div>
+  <div class="auth-links-container">
+    Already have an account?<a (click)="onSignIn()" class="auth-links"
+      >Sign In</a
+    >
+  </div>
 
-    </form>
-  <!-- </div>
-</div> -->
+</form>
+

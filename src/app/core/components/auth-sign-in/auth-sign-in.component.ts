@@ -47,12 +47,17 @@ export class AuthSignInComponent implements OnInit {
     this.onClose();
   }
 
-  onSignUp() {
-    this.onClose();
-    
-  }
-
   onClose() {
     this.matDialogRef.close();
+  }
+
+  onSignUp() {
+    this.onClose();
+    this.authService.openSignUpDialog();
+  }
+
+  onForgotPassword() {
+    this.onClose();
+    this.authService.openForgotPassword();
   }
 }

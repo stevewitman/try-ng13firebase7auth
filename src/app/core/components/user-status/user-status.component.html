@@ -1,16 +1,15 @@
- 
-  
-  <button mat-stroked-button (click)="onSignup()" class="auth-button" *ngIf="!currentUser">
-    Create Account
-  </button>
-  <button mat-stroked-button (click)="onSignin()" class="auth-button" *ngIf="!currentUser">
-    Sign In
-  </button>
-  <span *ngIf="isSignedIn">{{ userEmail }}</span>
-  <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="currentUser" [matMenuTriggerFor]="menu">
-    <mat-icon>person</mat-icon>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="onSignout()">Signout</button>
-    </mat-menu>
-  </button>
-
+<button mat-stroked-button (click)="onSignup()" class="auth-button" *ngIf="!currentUser">
+  Create Account
+</button>
+<button mat-stroked-button (click)="onSignin()" class="auth-button" *ngIf="!currentUser">
+  Sign In
+</button>
+<button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="currentUser" [matMenuTriggerFor]="menu">
+  <mat-icon>person</mat-icon>
+  <mat-menu #menu="matMenu">
+    <div class="signed-in-as">Signed in as:</div>
+    <div class="user-email">{{ currentUser.email }}</div>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="onSignout()" class="menu-buttons">Sign Out</button>
+  </mat-menu>
+</button>

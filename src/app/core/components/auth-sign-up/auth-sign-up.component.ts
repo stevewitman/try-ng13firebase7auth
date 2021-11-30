@@ -85,4 +85,17 @@ export class AuthSignUpComponent implements OnInit {
     const hasAtLeastOneLetter = /[a-zA-Z]/;
     return hasAtLeastOneLetter.test(value);
   }
+
+  onClose() {
+    this.matDialogRef.close();
+  }
+
+  onSignup() {
+    this.authService.openSignUpDialog();
+  }
+
+  onSignIn() {
+    this.onClose();
+    this.authService.openSignInDialog();
+  }
 }

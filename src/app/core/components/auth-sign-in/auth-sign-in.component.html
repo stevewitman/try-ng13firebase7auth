@@ -1,5 +1,3 @@
-<!-- <div class="container">
-  <div class="auth-form"> -->
 <div class="form-header">
   <h2 class="form-title">Sign In</h2>
   <button
@@ -8,9 +6,9 @@
     <mat-icon>close</mat-icon>
   </button>
 </div>
+
 <form [formGroup]="authForm">
   
-
   <mat-form-field appearance="fill" class="auth-form-field">
     <mat-label>Email</mat-label>
     <input
@@ -71,12 +69,10 @@
     >
     <br />
     or<a
-      routerLink="/forgot-password"
-      routerLinkActive="active"
+      (click)="onForgotPassword()"
       class="auth-links"
       >Forgot Password</a
     >
   </div>
 </form>
-<!-- </div>
-</div> -->
+

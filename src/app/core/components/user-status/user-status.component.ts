@@ -32,21 +32,11 @@ export class UserStatusComponent implements OnInit {
   }
 
   onSignin() {
-    // this.router.navigate(['sign-in']);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    // dialogConfig.minWidth = '25%';
-    this.matDialog.open(AuthSignInComponent, dialogConfig);
-
+    this.authService.openSignInDialog();
   }
 
   onSignup() {
-    // this.router.navigate(['sign-up']);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    this.matDialog.open(AuthSignUpComponent, dialogConfig);
+    this.authService.openSignUpDialog();
   }
 
   onSignout() {

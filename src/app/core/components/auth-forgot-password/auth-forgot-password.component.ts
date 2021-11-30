@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class AuthForgotPasswordComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
+    private matDialogRef: MatDialogRef<AuthForgotPasswordComponent>
   ) {}
 
   get email() {
@@ -25,6 +28,9 @@ export class AuthForgotPasswordComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit() {}
+
+  onClose() {
+    this.matDialogRef.close();
   }
 }
